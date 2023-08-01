@@ -2,6 +2,7 @@
 @import './spacings/index';
 @import './positions/index';
 @import './base/index';
+@import './animations/index';
 
 .loader {
   color: yellowgreen;
@@ -49,4 +50,48 @@
     box-shadow: 0em -3em 0 0, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em,
       -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em;
   }
+}
+
+.VuePagination__pagination {
+  display: flex;
+  list-style-type: none;
+  align-items: center;
+  column-gap: 7px;
+  padding: 0;
+
+  &-item {
+    color: #4f4f4f;
+    font-weight: 400;
+
+    & button {
+      cursor: pointer;
+      background: transparent;
+      border: none;
+
+      &.active {
+        color: yellowgreen;
+        font-weight: 700;
+      }
+    }
+
+    &-prev-page,
+    &-next-page {
+      width: 32px;
+      height: 32px;
+      background: #ebebeb;
+      border-radius: 5px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &-prev-chunk,
+    &-next-chunk {
+      display: none;
+    }
+  }
+}
+
+.VuePagination__count {
+  display: none;
 }

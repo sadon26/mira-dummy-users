@@ -2,6 +2,10 @@
   height: 100vh;
 }
 
+.w-full {
+  width: 100%;
+}
+
 .overflow {
   &-scroll {
     overflow: scroll;
@@ -14,5 +18,8 @@
 .text {
   &-left {
     text-align: left;
+  }
+  &-center {
+    text-align: center;
   }
 }

@@ -17,7 +17,16 @@ export const useQuery = ({ type = 'get', url, onSuccess, onError, enabled = true
   const isError = ref(false);
   const error = ref({});
 
-  const mutate = async (payload: any = {}, config: any = {}) => {
+  const mutate = async ({
+    payload,
+    config,
+    url: newURL
+  }: {
+    payload?: any;
+    config?: any;
+    url?: string;
+  }) => {
+    console.log(url, '>>>>');
     isLoading.value = true;
     isError.value = false;
     isSuccess.value = false;
@@ -25,7 +34,7 @@ export const useQuery = ({ type = 'get', url, onSuccess, onError, enabled = true
 
     try {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const response: any = await (axios as any)[type as string](url, payload, config);
+      const response: any = await (axios as any)[type as string](newURL || url, payload, config);
       console.log(response.data);
       Object.assign(data, response.data);
       isSuccess.value = true;
@@ -44,7 +53,7 @@ export const useQuery = ({ type = 'get', url, onSuccess, onError, enabled = true
   };
 
   onMounted(() => {
-    type === 'get' && enabled && mutate();
+    type === 'get' && enabled && mutate({});
   });
 
   return {
