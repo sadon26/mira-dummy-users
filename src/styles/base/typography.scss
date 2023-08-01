@@ -1,0 +1,26 @@
+@for $i from 1 to 30 {
+  .text-\[#{$i}px\] {
+    font-size: #{$i}px;
+  }
+}
+
+$sizes: (
+  normal: 400,
+  medium: 500,
+  bold: 600,
+  semi-bold: 700
+);
+
+.font {
+  @each $size, $weight in $sizes {
+    &-#{$size} {
+      font-weight: $weight;
+    }
+  }
+}
+
+.text {
+  &-grey-black {
+    color: #333333;
+  }
+}

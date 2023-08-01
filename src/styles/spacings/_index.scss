@@ -1,0 +1,54 @@
+@for $i from 1 to 30 {
+  $multiplier: 4 * $i;
+
+  .p-#{$i} {
+    padding: #{$multiplier}px;
+  }
+  .px-#{$i} {
+    padding-left: #{$multiplier}px;
+    padding-right: #{$multiplier}px;
+  }
+  .py-#{$i} {
+    padding-top: #{$multiplier}px;
+    padding-bottom: #{$multiplier}px;
+  }
+
+  .m-#{$i} {
+    margin: #{$multiplier}px;
+  }
+  .mr-#{$i} {
+    margin-right: #{$multiplier}px;
+  }
+  .mx-#{$i} {
+    margin-left: #{$multiplier}px;
+    margin-right: #{$multiplier}px;
+  }
+  .my-#{$i} {
+    margin-top: #{$multiplier}px;
+    margin-bottom: #{$multiplier}px;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.flex {
+  display: flex;
+}
+
+.justify {
+  &-between {
+    justify-content: space-between;
+  }
+
+  &-center {
+    justify-content: center;
+  }
+}
+
+.items {
+  &-center {
+    align-items: center;
+  }
+}
