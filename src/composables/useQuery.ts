@@ -6,8 +6,10 @@ type Props = {
   type?: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onSuccess?: (e: any) => void;
+  isError?: boolean;
   onError?: (e: any) => void;
   enabled?: boolean;
+  error?: any;
 };
 
 export const useQuery = ({ type = 'get', url, onSuccess, onError, enabled = true }: Props) => {

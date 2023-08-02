@@ -39,14 +39,14 @@ import { UsersHeaders } from '@/helpers/mocks';
 import { RowType } from '@/helpers/types.interface';
 import { useQuery, useDebounce } from '@/composables';
 import { computed, reactive, ref, watch } from 'vue';
-import { urlToSearchParams } from '../../helpers/functions';
+import { urlToSearchParams } from '@/helpers/functions';
 import Pagination from 'v-pagination-3';
 
 const searchValue = ref('');
 const limit = 10;
 const filters = reactive({ q: '', page: 1 } as { q: string; page: number });
 
-useDebounce(searchValue, 1000, (input: { value: string }) => {
+useDebounce(searchValue as any, 1000, (input: any) => {
   Object.assign(filters, { q: input.value, page: 1 });
 });
 
@@ -65,7 +65,7 @@ let URL = computed(() => ({
   })
 }));
 
-const { data, isLoading, isError, mutate: fetchUsers } = useQuery(URL.value);
+const { data, isLoading, isError, mutate: fetchUsers }: any = useQuery(URL.value);
 
 const reloadPage = () => window.location.reload();
 
