@@ -4,7 +4,9 @@
   </div>
   <div v-else class="py-20 px-22 h-screen overflow-y-scroll fade-in">
     <div class="flex justify-between items-center">
-      <h3 class="text-[24px] font-medium">{{ data?.total ?? 0 }} Customers</h3>
+      <h3 class="text-[24px] font-medium">
+        {{ formatNumberToText(data?.total ?? 0, 'Customer') }}
+      </h3>
       <div class="search-box">
         <SearchInput placeholder="Search by item name..." v-model="searchValue" />
       </div>
@@ -39,7 +41,7 @@ import { UsersHeaders } from '@/helpers/mocks';
 import { RowType } from '@/helpers/types.interface';
 import { useQuery, useDebounce } from '@/composables';
 import { computed, reactive, ref, watch } from 'vue';
-import { urlToSearchParams } from '@/helpers/functions';
+import { urlToSearchParams, formatNumberToText } from '@/helpers/functions';
 import Pagination from 'v-pagination-3';
 
 const searchValue = ref('');

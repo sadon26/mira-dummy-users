@@ -7,3 +7,8 @@ export const cleanupObject = (object: object) => {
 
 export const urlToSearchParams = (url: string, object: object) =>
   `${url}?${new URLSearchParams(cleanupObject(object)).toString()}`;
+
+export const formatNumberToText = (value: number, string: string) => {
+  const text = `${value} ${string}`;
+  return Number(value) <= 1 ? text : `${text}s`;
+};
