@@ -8,7 +8,6 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from 'vue';
 import { SearchIcon } from '@/assets';
 
 const emits = defineEmits(['update:modelValue']);

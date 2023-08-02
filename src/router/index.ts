@@ -1,5 +1,5 @@
-import { createRouter, createWebHistory } from 'vue-router';
 import { Users } from '../views';
+import { createWebHistory, createRouter } from 'vue-router';
 
 const routes = [
   {

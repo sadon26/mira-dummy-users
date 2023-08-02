@@ -36,11 +36,8 @@
 
 <script setup lang="ts">
 import moment from 'moment';
-import { Table, SearchInput } from '@/components';
 import { UsersHeaders } from '@/helpers/mocks';
 import { RowType } from '@/helpers/types.interface';
-import { useQuery, useDebounce } from '@/composables';
-import { computed, reactive, ref, watch } from 'vue';
 import { urlToSearchParams, formatNumberToText } from '@/helpers/functions';
 import Pagination from 'v-pagination-3';
 

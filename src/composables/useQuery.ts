@@ -1,4 +1,3 @@
-import { onMounted, reactive, ref } from 'vue';
 import axios from 'axios';
 
 type Props = {
@@ -36,7 +35,6 @@ export const useQuery = ({ type = 'get', url, onSuccess, onError, enabled = true
     try {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const response: any = await (axios as any)[type as string](newURL || url, payload, config);
-      console.log(response.data);
       Object.assign(data, response.data);
       isSuccess.value = true;
       onSuccess?.(response);
