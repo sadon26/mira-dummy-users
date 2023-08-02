@@ -14,9 +14,9 @@
       <template #default="{ row }: { row: RowType }">
         <td class="p-3 border-t-1 flex items-center">
           <div class="user-img mr-4">
-            <img :src="row.image" :alt="`${row.firstName} ${row.lastName}`" />
+            <img :src="row.image" :alt="getFullName(row)" />
           </div>
-          <span>{{ row.firstName }} {{ row.lastName }}</span>
+          <span>{{ getFullName(row) }}</span>
         </td>
         <td class="p-3 border-t-1 font-semi-bold">{{ row.email }}</td>
         <td class="p-3 border-t-1" style="width: 55%">{{ moment(row.birthDate).fromNow() }}</td>
@@ -68,6 +68,8 @@ let URL = computed(() => ({
 const { data, isLoading, isError, mutate: fetchUsers }: any = useQuery(URL.value);
 
 const reloadPage = () => window.location.reload();
+
+const getFullName = (row: RowType) => `${row.firstName} ${row.lastName}`;
 
 watch(filters, () => {
   fetchUsers({ url: URL.value.url });
