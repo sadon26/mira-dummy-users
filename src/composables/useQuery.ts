@@ -1,4 +1,4 @@
-import { onMounted, reactive, ref, watch } from 'vue';
+import { onMounted, reactive, ref } from 'vue';
 import axios from 'axios';
 
 type Props = {
