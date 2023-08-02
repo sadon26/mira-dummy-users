@@ -28,7 +28,6 @@ export const useQuery = ({ type = 'get', url, onSuccess, onError, enabled = true
     config?: any;
     url?: string;
   }) => {
-    console.log(url, '>>>>');
     isLoading.value = true;
     isError.value = false;
     isSuccess.value = false;
