@@ -12,15 +12,9 @@ import { ref, watch, onMounted } from 'vue';
 import { SearchIcon } from '@/assets';
 
 const emits = defineEmits(['update:modelValue']);
-const props = defineProps(['modelValue']);
+const { modelValue } = defineProps(['modelValue']);
 
-const inputText = ref('');
-
-onMounted(() => {
-  if (props.modelValue) {
-    inputText.value = props.modelValue;
-  }
-});
+const inputText = ref(modelValue ?? '');
 
 watch(inputText, (newValue) => {
   emits('update:modelValue', newValue);
@@ -28,22 +22,24 @@ watch(inputText, (newValue) => {
 </script>
 
 <style scoped lang="scss">
-.search-box {
-  border: 1px solid #e0e0e0;
-  background: #f5f5f5;
-  border-radius: 15px;
-  height: 43px;
-}
+.search {
+  &-box {
+    border: 1px solid #e0e0e0;
+    background: #f5f5f5;
+    border-radius: 15px;
+    height: 43px;
+  }
 
-.search-input {
-  border: 1px solid transparent;
-  background: transparent;
-  border-radius: 15px;
-  outline: none;
-  flex: 1;
+  &-input {
+    border: 1px solid transparent;
+    background: transparent;
+    border-radius: 15px;
+    outline: none;
+    flex: 1;
 
-  &::placeholder {
-    color: #b3b3b3;
+    &::placeholder {
+      color: #b3b3b3;
+    }
   }
 }
 </style>

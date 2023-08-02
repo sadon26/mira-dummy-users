@@ -1,20 +1,14 @@
 <template>
-  <div v-if="loading" class="py-20 px-22 flex justify-center items-center">
-    <div class="flex items-center">
-      <p>Loading...</p>
-      <div class="loader" />
-    </div>
-  </div>
-  <table v-else width="100%" class="table">
+  <table width="100%" class="table">
     <TableHeader :headers="headers" />
-    <tbody v-if="!loading && !data.length">
+    <TableLoader v-if="loading" :headers="headers" :loading="loading" />
+    <tbody v-else-if="!loading && !data.length">
       <tr>
         <td class="text-center" :colspan="headers.length">
           <p class="font-bold text-[20px] my-20">NO DATA AVAILABLE</p>
         </td>
       </tr>
     </tbody>
-
     <TableBody v-else :data="data" #default="{ row }">
       <slot :row="row" />
     </TableBody>
@@ -22,8 +16,8 @@
 </template>
 
 <script setup lang="ts">
-import { TableHeader, TableBody } from './components';
-import { HeaderItem, TableDataItem } from '@/helpers/types.interface';
+import { TableHeader, TableBody, TableLoader } from './components';
+import { HeaderItem, TableDataItem } from '../../helpers/types.interface';
 
 defineSlots<{
   default: 'default';

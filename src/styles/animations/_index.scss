@@ -11,3 +11,21 @@
     opacity: 1;
   }
 }
+
+.skeleton {
+  &__item {
+    height: 62px;
+    background: linear-gradient(90deg, #f2f2f2 0%, #ccc 15%, #f2f2f2 50%);
+    background-clip: content-box;
+    animation: shimmer 0.8s linear infinite;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -700px 0;
+  }
+  100% {
+    background-position: 120% 0;
+  }
+}

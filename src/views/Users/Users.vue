@@ -1,5 +1,8 @@
 <template>
-  <div class="py-20 px-22 h-screen overflow-y-scroll fade-in">
+  <div v-if="isError" class="py-20 px-22">
+    Error loading page. <button @click="reloadPage">Refresh</button>
+  </div>
+  <div v-else class="py-20 px-22 h-screen overflow-y-scroll fade-in">
     <div class="flex justify-between items-center">
       <h3 class="text-[24px] font-medium">{{ data?.total ?? 0 }} Customers</h3>
       <div class="search-box">
@@ -10,7 +13,7 @@
     <Table :headers="UsersHeaders" mapKey="id" :data="data?.users ?? []" :loading="isLoading">
       <template #default="{ row }: { row: RowType }">
         <td class="p-3 border-t-1 flex items-center">
-          <div class="user__img mr-4">
+          <div class="user-img mr-4">
             <img :src="row.image" :alt="`${row.firstName} ${row.lastName}`" />
           </div>
           <span>{{ row.firstName }} {{ row.lastName }}</span>
@@ -31,7 +34,7 @@
 
 <script setup lang="ts">
 import moment from 'moment';
-import { Table, SearchInput } from '../../components';
+import { Table, SearchInput } from '@/components';
 import { UsersHeaders } from '@/helpers/mocks';
 import { RowType } from '@/helpers/types.interface';
 import { useQuery, useDebounce } from '@/composables';
@@ -62,7 +65,9 @@ let URL = computed(() => ({
   })
 }));
 
-const { data, isLoading, mutate: fetchUsers } = useQuery(URL.value);
+const { data, isLoading, isError, mutate: fetchUsers } = useQuery(URL.value);
+
+const reloadPage = () => window.location.reload();
 
 watch(filters, () => {
   fetchUsers({ url: URL.value.url });
@@ -70,7 +75,7 @@ watch(filters, () => {
 </script>
 
 <style lang="scss" scoped>
-.user__img {
+.user-img {
   width: 32px;
   height: 32px;
   border-radius: 50%;
