@@ -1,7 +1,7 @@
 export type HeaderItem = {
   key: string;
   text: string;
-  class: string;
+  class?: string;
 };
 
 export type TableDataItem = {
