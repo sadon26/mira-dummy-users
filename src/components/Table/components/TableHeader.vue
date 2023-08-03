@@ -4,7 +4,10 @@
       <th
         v-for="header in headers"
         :key="header.key"
-        :class="['text-left text-[20px] font-medium p-3 text-grey-black border-t-1', header.class]"
+        :class="[
+          'text-left text-[16px] whitespace-nowrap md:text-[20px] font-medium p-3 text-grey-black border-t-1',
+          header.class
+        ]"
       >
         {{ header.text }}
       </th>

@@ -2,6 +2,12 @@
   .text-\[#{$i}px\] {
     font-size: #{$i}px;
   }
+
+  @media screen and (min-width: 768px) {
+    .md\:text-\[#{$i}px\] {
+      font-size: #{$i}px;
+    }
+  }
 }
 
 $sizes: (

@@ -2,9 +2,9 @@
   <div v-if="isError" class="py-20 px-22">
     Error loading page. <button @click="reloadPage">Refresh</button>
   </div>
-  <div v-else class="py-20 px-22 h-screen overflow-y-scroll fade-in">
-    <div class="flex justify-between items-center flex-wrap">
-      <h3 class="text-[24px] font-medium">
+  <div v-else class="py-3-percent px-6-percent h-screen overflow-y-scroll fade-in">
+    <div class="flex justify-between items-center flex-wrap mb-4">
+      <h3 class="text-[18px] md:text-[24px] font-medium m-none">
         {{ formatNumberToText(data?.total ?? 0, 'Customer') }}
       </h3>
       <div class="search-box">
@@ -15,14 +15,21 @@
     <div class="w-full overflow-x-scroll">
       <Table :headers="UsersHeaders" mapKey="id" :data="data?.users ?? []" :loading="isLoading">
         <template #default="{ row }: { row: RowType }">
-          <td class="p-3 border-t-1 flex items-center">
+          <td class="p-3 border-t-1 flex text-[14px] md:text-[16px] items-center">
             <div class="user-img mr-4">
               <img :src="row.image" :alt="getFullName(row)" />
             </div>
             <span class="whitespace-nowrap">{{ getFullName(row) }}</span>
           </td>
-          <td class="p-3 border-t-1 font-semi-bold whitespace-nowrap">{{ row.email }}</td>
-          <td class="p-3 border-t-1 whitespace-nowrap" style="width: 55%">{{ moment(row.birthDate).fromNow() }}</td>
+          <td class="p-3 border-t-1 font-semi-bold text-[14px] md:text-[16px] whitespace-nowrap">
+            {{ row.email }}
+          </td>
+          <td
+            class="p-3 border-t-1 whitespace-nowrap text-[14px] md:text-[16px]"
+            style="width: 55%"
+          >
+            {{ moment(row.birthDate).fromNow() }}
+          </td>
         </template>
       </Table>
     </div>
@@ -92,6 +99,11 @@ watch(filters, () => {
 }
 
 .search-box {
-  width: 400px;
+  width: 250px;
+  @media screen and (min-width: 768px) {
+    width: 400px;
+  }
+  display: flex;
+  align-self: stretch;
 }
 </style>

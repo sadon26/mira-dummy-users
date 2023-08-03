@@ -4,17 +4,47 @@
   .p-#{$i} {
     padding: #{$multiplier}px;
   }
+  .p-#{$i}-percent {
+    padding: #{$i} + '%';
+  }
+  @media screen and (min-width: 768px) {
+    .md\:p-#{$i}-percent {
+      padding: #{$i} + '%';
+    }
+  }
   .px-#{$i} {
     padding-left: #{$multiplier}px;
     padding-right: #{$multiplier}px;
+  }
+  .px-#{$i}-percent {
+    padding-left: #{$i} + '%';
+    padding-right: #{$i} + '%';
+  }
+  @media screen and (min-width: 768px) {
+    .md\:px-#{$i}-percent {
+      padding: #{$i} + '%';
+    }
   }
   .py-#{$i} {
     padding-top: #{$multiplier}px;
     padding-bottom: #{$multiplier}px;
   }
 
+  .py-#{$i}-percent {
+    padding-top: #{$i} + '%';
+    padding-bottom: #{$i} + '%';
+  }
+  @media screen and (min-width: 768px) {
+    .md\:py-#{$i}-percent {
+      padding: #{$i} + '%';
+    }
+  }
+
   .m-#{$i} {
     margin: #{$multiplier}px;
+  }
+  .mb-#{$i} {
+    margin-bottom: #{$multiplier}px;
   }
   .mr-#{$i} {
     margin-right: #{$multiplier}px;
@@ -27,6 +57,10 @@
     margin-top: #{$multiplier}px;
     margin-bottom: #{$multiplier}px;
   }
+}
+
+.m-none {
+  margin: 0px;
 }
 
 * {
