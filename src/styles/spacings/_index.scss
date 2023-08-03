@@ -35,6 +35,10 @@
 
 .flex {
   display: flex;
+
+  &-wrap {
+    flex-wrap: wrap;
+  }
 }
 
 .justify {
@@ -50,5 +54,11 @@
 .items {
   &-center {
     align-items: center;
+  }
+}
+
+.whitespace {
+  &-nowrap {
+    white-space: nowrap;
   }
 }

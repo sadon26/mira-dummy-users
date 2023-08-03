@@ -5,7 +5,7 @@
 @import './animations/index';
 
 .VuePagination__pagination {
-  display: flex;
+  display: flex !important;
   list-style-type: none;
   align-items: center;
   column-gap: 7px;

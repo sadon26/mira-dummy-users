@@ -3,7 +3,7 @@
     Error loading page. <button @click="reloadPage">Refresh</button>
   </div>
   <div v-else class="py-20 px-22 h-screen overflow-y-scroll fade-in">
-    <div class="flex justify-between items-center">
+    <div class="flex justify-between items-center flex-wrap">
       <h3 class="text-[24px] font-medium">
         {{ formatNumberToText(data?.total ?? 0, 'Customer') }}
       </h3>
@@ -12,18 +12,20 @@
       </div>
     </div>
 
-    <Table :headers="UsersHeaders" mapKey="id" :data="data?.users ?? []" :loading="isLoading">
-      <template #default="{ row }: { row: RowType }">
-        <td class="p-3 border-t-1 flex items-center">
-          <div class="user-img mr-4">
-            <img :src="row.image" :alt="getFullName(row)" />
-          </div>
-          <span>{{ getFullName(row) }}</span>
-        </td>
-        <td class="p-3 border-t-1 font-semi-bold">{{ row.email }}</td>
-        <td class="p-3 border-t-1" style="width: 55%">{{ moment(row.birthDate).fromNow() }}</td>
-      </template>
-    </Table>
+    <div class="w-full overflow-x-scroll">
+      <Table :headers="UsersHeaders" mapKey="id" :data="data?.users ?? []" :loading="isLoading">
+        <template #default="{ row }: { row: RowType }">
+          <td class="p-3 border-t-1 flex items-center">
+            <div class="user-img mr-4">
+              <img :src="row.image" :alt="getFullName(row)" />
+            </div>
+            <span class="whitespace-nowrap">{{ getFullName(row) }}</span>
+          </td>
+          <td class="p-3 border-t-1 font-semi-bold whitespace-nowrap">{{ row.email }}</td>
+          <td class="p-3 border-t-1 whitespace-nowrap" style="width: 55%">{{ moment(row.birthDate).fromNow() }}</td>
+        </template>
+      </Table>
+    </div>
 
     <Pagination
       v-if="!isLoading"
