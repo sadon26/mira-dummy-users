@@ -34,6 +34,7 @@
     padding-top: #{$i} + '%';
     padding-bottom: #{$i} + '%';
   }
+
   @media screen and (min-width: 768px) {
     .md\:py-#{$i}-percent {
       padding: #{$i} + '%';
@@ -56,6 +57,9 @@
   .my-#{$i} {
     margin-top: #{$multiplier}px;
     margin-bottom: #{$multiplier}px;
+  }
+  .gap-#{$i} {
+    gap: #{$multiplier}px;
   }
 }
 

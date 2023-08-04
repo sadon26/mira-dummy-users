@@ -3,7 +3,7 @@
     Error loading page. <button @click="reloadPage">Refresh</button>
   </div>
   <div v-else class="py-3-percent px-6-percent h-screen overflow-y-scroll fade-in">
-    <div class="flex justify-between items-center flex-wrap mb-4">
+    <div class="flex justify-between items-center flex-wrap mb-4 gap-3">
       <h3 class="text-[18px] md:text-[24px] font-medium m-none">
         {{ formatNumberToText(data?.total ?? 0, 'Customer') }}
       </h3>
